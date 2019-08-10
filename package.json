@@ -1,0 +1,22 @@
+{
+  "name": "js-fullstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thtop/js-fullstack.git"
+  },
+  "author": "Thamonwan Maneechan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thtop/js-fullstack/issues"
+  },
+  "homepage": "https://github.com/thtop/js-fullstack#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
