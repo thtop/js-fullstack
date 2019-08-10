@@ -1,6 +1,14 @@
 let express = require('express');
+let mongodb = require('mongodb');
 
 let app = express();
+let db;
+
+let connectionString = 'mongodb+srv://mSI:k7MjxYg6lpDvzXsO@cluster0-mlatc.mongodb.net/TodoApp?retryWrites=true&w=majority';
+mongodb.connect(connectionString, {useNewUrlParser: true}, function(err, client) {
+  db = client.db();
+  app.listen(3000);
+});
 
 app.use(express.urlencoded({extended: false}));
 
@@ -57,8 +65,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/create-item', function(req,res) {
-    console.log(req.body.item);
-    res.send('Thank you');
+    db.collection('items').insertOne({text: req.body.item}, function() {
+      res.send('Thanks for submitting the form.');
+    });
 });
 
-app.listen(3000);
