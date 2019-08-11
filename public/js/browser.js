@@ -1,4 +1,19 @@
 document.addEventListener('click', function(e) {
+
+    // Delete Feature
+    if (e.target.classList.contains('delete-me')) {
+        if (confirm('Do you really want to delete this item permanently?')) {
+            axios.post('/delete-item', {id: e.target.getAttribute('data-id')})
+            .then(function() {
+                e.target.parentElement.parentElement.remove();
+            })
+            .catch(function() {
+                console.log('Plese try again later.')
+            });
+        }
+    }
+
+    // Update Feature
     if (e.target.classList.contains('edit-me')) {
         let userInput = prompt('Enter your decired new text:', e.target.parentElement.parentElement.querySelector('.item-text').innerHTML);
         // console.log(userInput);
