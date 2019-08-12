@@ -1,9 +1,9 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const mongodb = require('mongodb');
 
-const connectionString = 'mongodb+srv://mSI:k7MjxYg6lpDvzXsO@cluster0-mlatc.mongodb.net/ComplexApp?retryWrites=true&w=majority';
-
-mongodb.connect(connectionString, {useNewUrlParser: true}, function(err, client) {
+mongodb.connect(process.env.CONNECTIONSTRING, {useNewUrlParser: true}, function(err, client) {
     module.exports = client.db();
     const app = require('./app');
-    app.listen(3000);
+    app.listen(process.env.PORT);
 });
