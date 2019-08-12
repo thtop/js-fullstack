@@ -1,5 +1,15 @@
 const express = require('express');
+const seccion = require('express-session');
 const app = express();
+
+let sessionOptions = seccion({
+    secret: 'JavaScript is soo coool',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {maxAge: 1000 * 60 * 60 * 24, httpOnly: true}
+});
+
+app.use(sessionOptions);
 
 const router = require('./router');
 
