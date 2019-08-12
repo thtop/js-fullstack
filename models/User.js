@@ -62,6 +62,17 @@ User.prototype.validate = function() {
     }
 }
 
+User.prototype.login = function(callback) {
+    this.cleanUp();
+    usersCollection.findOne({username: this.data.username}, (err, attemptedUser) => {
+        if (attemptedUser && attemptedUser.password == this.data.password) {
+            callback('Congrats!');
+        } else {
+            callback('Invalid username / password');
+        }
+    });
+}
+
 User.prototype.register = function(req, res) {
     // Step #1: Validate user data
     this.cleanUp();
